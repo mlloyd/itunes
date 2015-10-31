@@ -7,28 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1FC555B1BE4BB4A00A2380A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC555A1BE4BB4A00A2380A /* main.m */; };
-		C1FC555E1BE4BB4A00A2380A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC555D1BE4BB4A00A2380A /* AppDelegate.m */; };
-		C1FC55611BE4BB4A00A2380A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55601BE4BB4A00A2380A /* MasterViewController.m */; };
-		C1FC55641BE4BB4A00A2380A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55631BE4BB4A00A2380A /* DetailViewController.m */; };
-		C1FC55671BE4BB4A00A2380A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55651BE4BB4A00A2380A /* Main.storyboard */; };
-		C1FC55691BE4BB4A00A2380A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55681BE4BB4A00A2380A /* Assets.xcassets */; };
-		C1FC556C1BE4BB4A00A2380A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FC556A1BE4BB4A00A2380A /* LaunchScreen.storyboard */; };
+		C1FC559E1BE4BC4800A2380A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55741BE4BC4800A2380A /* Assets.xcassets */; };
+		C1FC559F1BE4BC4800A2380A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55751BE4BC4800A2380A /* LaunchScreen.storyboard */; };
+		C1FC55A01BE4BC4800A2380A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55771BE4BC4800A2380A /* Main.storyboard */; };
+		C1FC55A11BE4BC4800A2380A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55791BE4BC4800A2380A /* Info.plist */; };
+		C1FC55A21BE4BC4800A2380A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC557A1BE4BC4800A2380A /* main.m */; };
+		C1FC55A31BE4BC4800A2380A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC557E1BE4BC4800A2380A /* DetailViewController.m */; };
+		C1FC55A41BE4BC4800A2380A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55811BE4BC4800A2380A /* MasterViewController.m */; };
+		C1FC55A51BE4BC4800A2380A /* AppAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55841BE4BC4800A2380A /* AppAssembly.m */; };
+		C1FC55A61BE4BC4800A2380A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55861BE4BC4800A2380A /* AppDelegate.m */; };
+		C1FC55A71BE4BC4800A2380A /* AppStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55881BE4BC4800A2380A /* AppStyle.m */; };
+		C1FC55A81BE4BC4800A2380A /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC558C1BE4BC4800A2380A /* SongTableViewCell.m */; };
+		C1FC55A91BE4BC4800A2380A /* SongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FC558D1BE4BC4800A2380A /* SongTableViewCell.xib */; };
+		C1FC55AD1BE4BC4800A2380A /* ItunesRemoteService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55981BE4BC4800A2380A /* ItunesRemoteService.m */; };
+		C1FC55AE1BE4BC4800A2380A /* ItunesService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC559B1BE4BC4800A2380A /* ItunesService.m */; };
+		C1FC55AF1BE4BC4800A2380A /* ImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC559D1BE4BC4800A2380A /* ImageService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C1FC55561BE4BB4A00A2380A /* itunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1FC555A1BE4BB4A00A2380A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C1FC555C1BE4BB4A00A2380A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C1FC555D1BE4BB4A00A2380A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C1FC555F1BE4BB4A00A2380A /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		C1FC55601BE4BB4A00A2380A /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		C1FC55621BE4BB4A00A2380A /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		C1FC55631BE4BB4A00A2380A /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		C1FC55661BE4BB4A00A2380A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C1FC55681BE4BB4A00A2380A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C1FC556B1BE4BB4A00A2380A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C1FC556D1BE4BB4A00A2380A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1FC55741BE4BC4800A2380A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1FC55761BE4BC4800A2380A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C1FC55781BE4BC4800A2380A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1FC55791BE4BC4800A2380A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1FC557A1BE4BC4800A2380A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C1FC557D1BE4BC4800A2380A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		C1FC557E1BE4BC4800A2380A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		C1FC55801BE4BC4800A2380A /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		C1FC55811BE4BC4800A2380A /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		C1FC55831BE4BC4800A2380A /* AppAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAssembly.h; sourceTree = "<group>"; };
+		C1FC55841BE4BC4800A2380A /* AppAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAssembly.m; sourceTree = "<group>"; };
+		C1FC55851BE4BC4800A2380A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C1FC55861BE4BC4800A2380A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C1FC55871BE4BC4800A2380A /* AppStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStyle.h; sourceTree = "<group>"; };
+		C1FC55881BE4BC4800A2380A /* AppStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStyle.m; sourceTree = "<group>"; };
+		C1FC558B1BE4BC4800A2380A /* SongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewCell.h; sourceTree = "<group>"; };
+		C1FC558C1BE4BC4800A2380A /* SongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewCell.m; sourceTree = "<group>"; };
+		C1FC558D1BE4BC4800A2380A /* SongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongTableViewCell.xib; sourceTree = "<group>"; };
+		C1FC55971BE4BC4800A2380A /* ItunesRemoteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItunesRemoteService.h; sourceTree = "<group>"; };
+		C1FC55981BE4BC4800A2380A /* ItunesRemoteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItunesRemoteService.m; sourceTree = "<group>"; };
+		C1FC559A1BE4BC4800A2380A /* ItunesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItunesService.h; sourceTree = "<group>"; };
+		C1FC559B1BE4BC4800A2380A /* ItunesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItunesService.m; sourceTree = "<group>"; };
+		C1FC559C1BE4BC4800A2380A /* ImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageService.h; sourceTree = "<group>"; };
+		C1FC559D1BE4BC4800A2380A /* ImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,27 +82,120 @@
 		C1FC55581BE4BB4A00A2380A /* itunes */ = {
 			isa = PBXGroup;
 			children = (
-				C1FC555C1BE4BB4A00A2380A /* AppDelegate.h */,
-				C1FC555D1BE4BB4A00A2380A /* AppDelegate.m */,
-				C1FC555F1BE4BB4A00A2380A /* MasterViewController.h */,
-				C1FC55601BE4BB4A00A2380A /* MasterViewController.m */,
-				C1FC55621BE4BB4A00A2380A /* DetailViewController.h */,
-				C1FC55631BE4BB4A00A2380A /* DetailViewController.m */,
-				C1FC55651BE4BB4A00A2380A /* Main.storyboard */,
-				C1FC55681BE4BB4A00A2380A /* Assets.xcassets */,
-				C1FC556A1BE4BB4A00A2380A /* LaunchScreen.storyboard */,
-				C1FC556D1BE4BB4A00A2380A /* Info.plist */,
-				C1FC55591BE4BB4A00A2380A /* Supporting Files */,
+				C1FC55821BE4BC4800A2380A /* Application */,
+				C1FC558E1BE4BC4800A2380A /* Business Logic */,
+				C1FC55731BE4BC4800A2380A /* Resources */,
+				C1FC557B1BE4BC4800A2380A /* View Controllers */,
+				C1FC558A1BE4BC4800A2380A /* Views */,
 			);
 			path = itunes;
 			sourceTree = "<group>";
 		};
-		C1FC55591BE4BB4A00A2380A /* Supporting Files */ = {
+		C1FC55731BE4BC4800A2380A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C1FC555A1BE4BB4A00A2380A /* main.m */,
+				C1FC55741BE4BC4800A2380A /* Assets.xcassets */,
+				C1FC55751BE4BC4800A2380A /* LaunchScreen.storyboard */,
+				C1FC55771BE4BC4800A2380A /* Main.storyboard */,
+				C1FC55791BE4BC4800A2380A /* Info.plist */,
+				C1FC557A1BE4BC4800A2380A /* main.m */,
 			);
-			name = "Supporting Files";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C1FC557B1BE4BC4800A2380A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC557C1BE4BC4800A2380A /* Detail */,
+				C1FC557F1BE4BC4800A2380A /* Master */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C1FC557C1BE4BC4800A2380A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC557D1BE4BC4800A2380A /* DetailViewController.h */,
+				C1FC557E1BE4BC4800A2380A /* DetailViewController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C1FC557F1BE4BC4800A2380A /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC55801BE4BC4800A2380A /* MasterViewController.h */,
+				C1FC55811BE4BC4800A2380A /* MasterViewController.m */,
+			);
+			path = Master;
+			sourceTree = "<group>";
+		};
+		C1FC55821BE4BC4800A2380A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC55831BE4BC4800A2380A /* AppAssembly.h */,
+				C1FC55841BE4BC4800A2380A /* AppAssembly.m */,
+				C1FC55851BE4BC4800A2380A /* AppDelegate.h */,
+				C1FC55861BE4BC4800A2380A /* AppDelegate.m */,
+				C1FC55871BE4BC4800A2380A /* AppStyle.h */,
+				C1FC55881BE4BC4800A2380A /* AppStyle.m */,
+				C1FC55891BE4BC4800A2380A /* Categories */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C1FC55891BE4BC4800A2380A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C1FC558A1BE4BC4800A2380A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC558B1BE4BC4800A2380A /* SongTableViewCell.h */,
+				C1FC558C1BE4BC4800A2380A /* SongTableViewCell.m */,
+				C1FC558D1BE4BC4800A2380A /* SongTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C1FC558E1BE4BC4800A2380A /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC558F1BE4BC4800A2380A /* Model */,
+				C1FC55961BE4BC4800A2380A /* Remote Services */,
+				C1FC55991BE4BC4800A2380A /* Services */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		C1FC558F1BE4BC4800A2380A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C1FC55961BE4BC4800A2380A /* Remote Services */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC55971BE4BC4800A2380A /* ItunesRemoteService.h */,
+				C1FC55981BE4BC4800A2380A /* ItunesRemoteService.m */,
+			);
+			path = "Remote Services";
+			sourceTree = "<group>";
+		};
+		C1FC55991BE4BC4800A2380A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC559A1BE4BC4800A2380A /* ItunesService.h */,
+				C1FC559B1BE4BC4800A2380A /* ItunesService.m */,
+				C1FC559C1BE4BC4800A2380A /* ImageService.h */,
+				C1FC559D1BE4BC4800A2380A /* ImageService.m */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +255,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1FC556C1BE4BB4A00A2380A /* LaunchScreen.storyboard in Resources */,
-				C1FC55691BE4BB4A00A2380A /* Assets.xcassets in Resources */,
-				C1FC55671BE4BB4A00A2380A /* Main.storyboard in Resources */,
+				C1FC55A91BE4BC4800A2380A /* SongTableViewCell.xib in Resources */,
+				C1FC55A11BE4BC4800A2380A /* Info.plist in Resources */,
+				C1FC55A01BE4BC4800A2380A /* Main.storyboard in Resources */,
+				C1FC559E1BE4BC4800A2380A /* Assets.xcassets in Resources */,
+				C1FC559F1BE4BC4800A2380A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,30 +270,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1FC555E1BE4BB4A00A2380A /* AppDelegate.m in Sources */,
-				C1FC55611BE4BB4A00A2380A /* MasterViewController.m in Sources */,
-				C1FC555B1BE4BB4A00A2380A /* main.m in Sources */,
-				C1FC55641BE4BB4A00A2380A /* DetailViewController.m in Sources */,
+				C1FC55A21BE4BC4800A2380A /* main.m in Sources */,
+				C1FC55A51BE4BC4800A2380A /* AppAssembly.m in Sources */,
+				C1FC55A41BE4BC4800A2380A /* MasterViewController.m in Sources */,
+				C1FC55AE1BE4BC4800A2380A /* ItunesService.m in Sources */,
+				C1FC55AD1BE4BC4800A2380A /* ItunesRemoteService.m in Sources */,
+				C1FC55A31BE4BC4800A2380A /* DetailViewController.m in Sources */,
+				C1FC55AF1BE4BC4800A2380A /* ImageService.m in Sources */,
+				C1FC55A61BE4BC4800A2380A /* AppDelegate.m in Sources */,
+				C1FC55A81BE4BC4800A2380A /* SongTableViewCell.m in Sources */,
+				C1FC55A71BE4BC4800A2380A /* AppStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C1FC55651BE4BB4A00A2380A /* Main.storyboard */ = {
+		C1FC55751BE4BC4800A2380A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C1FC55661BE4BB4A00A2380A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C1FC556A1BE4BB4A00A2380A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1FC556B1BE4BB4A00A2380A /* Base */,
+				C1FC55761BE4BC4800A2380A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C1FC55771BE4BC4800A2380A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1FC55781BE4BC4800A2380A /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -269,7 +391,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = itunes/Info.plist;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
+				INFOPLIST_FILE = "$(SRCROOT)/itunes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mlloyd.itunes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -280,7 +403,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = itunes/Info.plist;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
+				INFOPLIST_FILE = "$(SRCROOT)/itunes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mlloyd.itunes;
 				PRODUCT_NAME = "$(TARGET_NAME)";

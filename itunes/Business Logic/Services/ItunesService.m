@@ -1,0 +1,45 @@
+//
+//  ItunesService.m
+//  itunes
+//
+//  Created by Martin Lloyd on 31/10/2015.
+//  Copyright © 2015 Martin Lloyd. All rights reserved.
+//
+
+#import "ItunesService.h"
+#import "ItunesRemoteService.h"
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+@interface ItunesService ()
+
+@property (nonatomic, weak) id<ItunesRemoteService> remoteService;
+
+@end
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+@implementation ItunesService
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (instancetype)initWithRemoteService:(id<ItunesRemoteService>)remoteService
+{
+    if (self = [super init]) {
+        self.remoteService = remoteService;
+    }
+    return self;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (void)fetchPlaylistUsingSearchTerm:(NSString *)searchTerm
+                   CompletionHandler:(ItunesServiceCompletionHandler)completionHandler
+                        errorHandler:(ItunesServiceCompletionHandler)errorHandler
+{
+    [self.remoteService fetchPlaylistUsingSearchTerm:searchTerm
+                                   CompletionHandler:completionHandler
+                                        errorHandler:errorHandler];
+}
+
+@end

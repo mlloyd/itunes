@@ -1,0 +1,18 @@
+//
+//  SongTableViewCell.h
+//  itunes
+//
+//  Created by Martin Lloyd on 31/10/2015.
+//  Copyright © 2015 Martin Lloyd. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+@interface SongTableViewCell : UITableViewCell
+
++ (NSString *)reuseIdentifier;
++ (UINib *)nib;
+
+@end
