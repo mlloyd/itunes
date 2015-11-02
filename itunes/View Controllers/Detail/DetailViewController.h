@@ -11,12 +11,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 @protocol ImageService;
+@class Song;
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, weak) id<ImageService> imageService;
 
-@property (nonatomic) id detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (nonatomic) Song *song;
 
 @end
 

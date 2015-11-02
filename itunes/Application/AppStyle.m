@@ -17,12 +17,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 + (void)applyAppStyle
 {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        
-    [[UINavigationBar appearance] setTranslucent:NO];
+#pragma GCC diagnostic pop
+    
     [[UINavigationBar appearance] setBarTintColor:[AppStyle purple]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UISearchBar     appearance] setBarTintColor:[AppStyle purple]];
+//    [[UISearchBar     appearance] setBarTintColor:[AppStyle purple]];
+//    [[UISearchBar     appearance] setBackgroundImage:[[UIImage alloc] init]];
+//    [[UISearchBar     appearance] setBackgroundColor:[AppStyle purple]];
+    
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
@@ -30,7 +35,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 + (UIColor *)purple
 {
-    return [UIColor colorWithRed:0.463f green:0.239f blue:0.518f alpha:1.00f];
+    return [UIColor colorWithRed:0.47 green:0.53 blue:0.60 alpha:1.0];
 }
 
 @end

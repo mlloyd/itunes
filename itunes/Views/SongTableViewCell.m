@@ -7,6 +7,14 @@
 //
 
 #import "SongTableViewCell.h"
+#import "UIView+MotionEffect.h"
+#import "AppStyle.h"
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+@interface SongTableViewCell()
+
+@end
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,6 +39,16 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    self.coverImage.alpha = 1.0f;
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.trackName.textColor  = [AppStyle purple];
+    self.artistName.textColor = [AppStyle purple];
+    
+    [self.trackName  addMotionEffects];
+    [self.artistName addMotionEffects];
+    [self.coverImage addMotionEffects];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +56,15 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    
+    self.coverImage.image = [[UIImage alloc] init];
 }
 
 @end

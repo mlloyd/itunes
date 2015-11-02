@@ -35,7 +35,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 - (void)fetchPlaylistUsingSearchTerm:(NSString *)searchTerm
                    CompletionHandler:(ItunesServiceCompletionHandler)completionHandler
-                        errorHandler:(ItunesServiceCompletionHandler)errorHandler
+                        errorHandler:(ItunesServiceErrorHandler)errorHandler
 {
     [self.remoteService fetchPlaylistUsingSearchTerm:searchTerm
                                    CompletionHandler:completionHandler

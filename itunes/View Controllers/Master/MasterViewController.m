@@ -11,7 +11,12 @@
 
 #import "SongTableViewCell.h"
 
+#import "AppStyle.h"
+
 #import "iTunesService.h"
+#import "ImageService.h"
+
+#import "Song.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,9 +25,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
-
-@property (nonatomic) NSMutableArray *searchResults;
+@property (nonatomic) NSArray<Song *> *searchResults;
 
 @end
 
@@ -37,25 +40,8 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"iTunes Playlist", @"");
-    self.view.backgroundColor = [UIColor lightGrayColor];
     
     [self _configureTableView];
-    [self _createActivityIndicator];
-}
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-- (void)viewWillAppear:(BOOL)animated
-{
-//    self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
-    [super viewWillAppear:animated];
-}
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Segues
@@ -65,12 +51,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        NSDate *object = self.searchResults[indexPath.row];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Song *song = self.searchResults[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
-        [controller setDetailItem:[NSNull null]];
-//        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-//        controller.navigationItem.leftItemsSupplementBackButton = YES;
+        controller.imageService = self.imageService;
+        [controller setSong:song];
     }
 }
 
@@ -87,11 +72,41 @@
 ////////////////////////////////////////////////////////////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[SongTableViewCell reuseIdentifier] forIndexPath:indexPath];
+    return [tableView dequeueReusableCellWithIdentifier:[SongTableViewCell reuseIdentifier] forIndexPath:indexPath];
+}
 
-    id result = self.searchResults[indexPath.row];
-    cell.textLabel.text = [result description];
-    return cell;
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SongTableViewCell *songCell = (SongTableViewCell *)cell;
+    
+    Song *song = self.searchResults[indexPath.row];
+    songCell.artistName.text = song.artistName;
+    songCell.trackName.text  = song.trackName;
+    
+    [self.imageService fetchImageWithURL:song.imageURL
+                       completionHandler:^(UIImage *image, BOOL fromCache) {
+                           if(fromCache) songCell.coverImage.image = image;
+                           else {
+                               songCell.coverImage.alpha = 0.0f;
+                               songCell.coverImage.image = image;
+                               [UIView animateWithDuration:0.3 animations:^{
+                                   songCell.coverImage.alpha = 1.0f;
+                               }];
+                           }
+                       }
+                            errorHandler:^(NSError *error) {}];
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row >= self.searchResults.count) return;
+    
+    Song *song = self.searchResults[indexPath.row];
+    [self.imageService cancelImageWithURL:song.imageURL];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -107,44 +122,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    __weak typeof(self) weakSelf = self;
-    
-    [self.activityIndicatorView startAnimating];
-    [searchBar resignFirstResponder];
-    // TODO: Validate search bar text
-    self.view.userInteractionEnabled = NO;
-    
-    dispatch_block_t fetchCompletionHandler = ^(){
-        weakSelf.view.userInteractionEnabled = YES;
-        [weakSelf.activityIndicatorView stopAnimating];
-    };
-    
-    dispatch_block_t completionHandler = ^(){
-        [self.itunesService fetchPlaylistUsingSearchTerm:searchBar.text
-                                       CompletionHandler:^(id result) {
-                                                [weakSelf.tableView reloadData];
-                                                [weakSelf animateOverlayToAlpha:0.0 completionHandler:fetchCompletionHandler];
+    __weak typeof(self) weakSelf = self;    
+    [self.itunesService fetchPlaylistUsingSearchTerm:searchBar.text
+                                   CompletionHandler:^(NSArray <Song *> * result) {
+                                            [weakSelf.imageService cancelAllImageDownloads];
+                                            [weakSelf.tableView setContentOffset:CGPointZero animated:NO];
+                                            weakSelf.searchResults = result;
+                                            [weakSelf.tableView reloadData];
     }
-                                            errorHandler:^(id result) {
-                                                  [weakSelf animateOverlayToAlpha:0.0 completionHandler:fetchCompletionHandler];
-                                            }];
-    };
-    
-    [self animateOverlayToAlpha:0.6 completionHandler:completionHandler];
-}
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-- (void)animateOverlayToAlpha:(CGFloat)alpha completionHandler:(dispatch_block_t)completionHandler
-{
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.3
-                     animations:^{
-//                         weakSelf.overlay.alpha = alpha;
-                     }
-                     completion:^(BOOL finished) {
-                         completionHandler();
-                     }];
+                                        errorHandler:^(NSError *error) {}];
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - Private Functions
@@ -154,20 +141,9 @@
 - (void)_configureTableView
 {
     [self.tableView registerNib:[SongTableViewCell nib] forCellReuseIdentifier:[SongTableViewCell reuseIdentifier]];
-    [self.tableView setRowHeight:80.0f];
-}
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-- (void)_createActivityIndicator
-{
-//    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//    self.activityIndicatorView.hidesWhenStopped = YES;
-//    [self.view addSubview:self.activityIndicatorView];
-//    [self.activityIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self.view.mas_centerX);
-//        make.centerY.equalTo(self.view.mas_centerY);
-//    }];
+    [self.tableView setRowHeight:150.0f];
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    [self.tableView setSeparatorColor:[AppStyle purple]];
 }
 
 @end

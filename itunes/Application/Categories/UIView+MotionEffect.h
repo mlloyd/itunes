@@ -1,20 +1,17 @@
 //
-//  AppStyle.h
+//  UIView+MotionEffect.h
 //  itunes
 //
-//  Created by Martin Lloyd on 31/10/2015.
+//  Created by Martin Lloyd on 02/11/2015.
 //  Copyright © 2015 Martin Lloyd. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-@interface AppStyle : NSObject
+@interface UIView (MotionEffect)
 
-+ (void)applyAppStyle;
-
-// Colors
-+ (UIColor *)purple;
+- (void)addMotionEffects;
 
 @end

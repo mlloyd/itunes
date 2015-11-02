@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^ItunesServiceCompletionHandler)(id result);
+@class Song;
+
+typedef void (^ItunesServiceCompletionHandler)(NSArray <Song *> * result);
 typedef void (^ItunesServiceErrorHandler)(NSError *error);
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -18,7 +20,7 @@ typedef void (^ItunesServiceErrorHandler)(NSError *error);
 
 - (void)fetchPlaylistUsingSearchTerm:(NSString *)searchTerm
                    CompletionHandler:(ItunesServiceCompletionHandler)completionHandler
-                        errorHandler:(ItunesServiceCompletionHandler)errorHandler;
+                        errorHandler:(ItunesServiceErrorHandler)errorHandler;
 
 @end
 

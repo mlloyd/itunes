@@ -54,9 +54,7 @@
     MasterViewController *masterViewController   = (MasterViewController *)navigationController.topViewController;
     
     masterViewController.itunesService = [self fetchItunesService];
-    masterViewController.imageService  = [self fetchImageService];
-    
-//    detailViewController.imageService  = [self fetchImageService];
+    masterViewController.imageService  = [self fetchImageService];    
 }
 
 #pragma mark - UINavigationControllerDelegate

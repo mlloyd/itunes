@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef void (^ImageServiceCompletionHandler)(UIImage *image);
+typedef void (^ImageServiceCompletionHandler)(UIImage *image, BOOL fromCache);
 typedef void (^ImageServiceErrorHandler)(NSError *error);
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,10 +17,11 @@ typedef void (^ImageServiceErrorHandler)(NSError *error);
 @protocol ImageService <NSObject>
 
 - (void)fetchImageWithURL:(NSURL *)imageURL
-        CompletionHandler:(ImageServiceCompletionHandler)completionHandler
-             errorHandler:(ImageServiceCompletionHandler)errorHandler;
+        completionHandler:(ImageServiceCompletionHandler)completionHandler
+             errorHandler:(ImageServiceErrorHandler)errorHandler;
 
 - (void)cancelImageWithURL:(NSURL *)imageURL;
+- (void)cancelAllImageDownloads;
 
 @end
 

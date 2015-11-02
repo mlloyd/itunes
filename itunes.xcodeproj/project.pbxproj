@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C13449D31BE4D6BE00882D33 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = C13449D21BE4D6BE00882D33 /* Song.m */; };
+		C13449D61BE74A9400882D33 /* UIView+MotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = C13449D51BE74A9400882D33 /* UIView+MotionEffect.m */; };
+		C13449D91BE74C8A00882D33 /* URLSessionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C13449D81BE74C8A00882D33 /* URLSessionOperation.m */; };
 		C1FC559E1BE4BC4800A2380A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55741BE4BC4800A2380A /* Assets.xcassets */; };
 		C1FC559F1BE4BC4800A2380A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55751BE4BC4800A2380A /* LaunchScreen.storyboard */; };
 		C1FC55A01BE4BC4800A2380A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55771BE4BC4800A2380A /* Main.storyboard */; };
-		C1FC55A11BE4BC4800A2380A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1FC55791BE4BC4800A2380A /* Info.plist */; };
 		C1FC55A21BE4BC4800A2380A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC557A1BE4BC4800A2380A /* main.m */; };
 		C1FC55A31BE4BC4800A2380A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC557E1BE4BC4800A2380A /* DetailViewController.m */; };
 		C1FC55A41BE4BC4800A2380A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC55811BE4BC4800A2380A /* MasterViewController.m */; };
@@ -25,6 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C13449D11BE4D6BE00882D33 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		C13449D21BE4D6BE00882D33 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		C13449D41BE74A9400882D33 /* UIView+MotionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MotionEffect.h"; sourceTree = "<group>"; };
+		C13449D51BE74A9400882D33 /* UIView+MotionEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MotionEffect.m"; sourceTree = "<group>"; };
+		C13449D71BE74C8A00882D33 /* URLSessionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLSessionOperation.h; sourceTree = "<group>"; };
+		C13449D81BE74C8A00882D33 /* URLSessionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSessionOperation.m; sourceTree = "<group>"; };
 		C1FC55561BE4BB4A00A2380A /* itunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FC55741BE4BC4800A2380A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1FC55761BE4BC4800A2380A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -147,6 +155,8 @@
 		C1FC55891BE4BC4800A2380A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C13449D41BE74A9400882D33 /* UIView+MotionEffect.h */,
+				C13449D51BE74A9400882D33 /* UIView+MotionEffect.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -174,6 +184,8 @@
 		C1FC558F1BE4BC4800A2380A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C13449D11BE4D6BE00882D33 /* Song.h */,
+				C13449D21BE4D6BE00882D33 /* Song.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +195,8 @@
 			children = (
 				C1FC55971BE4BC4800A2380A /* ItunesRemoteService.h */,
 				C1FC55981BE4BC4800A2380A /* ItunesRemoteService.m */,
+				C13449D71BE74C8A00882D33 /* URLSessionOperation.h */,
+				C13449D81BE74C8A00882D33 /* URLSessionOperation.m */,
 			);
 			path = "Remote Services";
 			sourceTree = "<group>";
@@ -256,7 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1FC55A91BE4BC4800A2380A /* SongTableViewCell.xib in Resources */,
-				C1FC55A11BE4BC4800A2380A /* Info.plist in Resources */,
 				C1FC55A01BE4BC4800A2380A /* Main.storyboard in Resources */,
 				C1FC559E1BE4BC4800A2380A /* Assets.xcassets in Resources */,
 				C1FC559F1BE4BC4800A2380A /* LaunchScreen.storyboard in Resources */,
@@ -273,8 +286,11 @@
 				C1FC55A21BE4BC4800A2380A /* main.m in Sources */,
 				C1FC55A51BE4BC4800A2380A /* AppAssembly.m in Sources */,
 				C1FC55A41BE4BC4800A2380A /* MasterViewController.m in Sources */,
+				C13449D61BE74A9400882D33 /* UIView+MotionEffect.m in Sources */,
 				C1FC55AE1BE4BC4800A2380A /* ItunesService.m in Sources */,
+				C13449D91BE74C8A00882D33 /* URLSessionOperation.m in Sources */,
 				C1FC55AD1BE4BC4800A2380A /* ItunesRemoteService.m in Sources */,
+				C13449D31BE4D6BE00882D33 /* Song.m in Sources */,
 				C1FC55A31BE4BC4800A2380A /* DetailViewController.m in Sources */,
 				C1FC55AF1BE4BC4800A2380A /* ImageService.m in Sources */,
 				C1FC55A61BE4BC4800A2380A /* AppDelegate.m in Sources */,
@@ -391,8 +407,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
 				INFOPLIST_FILE = "$(SRCROOT)/itunes/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mlloyd.itunes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -403,8 +419,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
 				INFOPLIST_FILE = "$(SRCROOT)/itunes/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mlloyd.itunes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -430,6 +446,7 @@
 				C1FC55721BE4BB4A00A2380A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

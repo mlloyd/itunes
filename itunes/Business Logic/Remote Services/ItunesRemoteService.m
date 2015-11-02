@@ -7,6 +7,7 @@
 //
 
 #import "ItunesRemoteService.h"
+#import "Song.h"
 
 /*//////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -24,6 +25,7 @@ NSString *const kItunesRemoteService_Endpoint = @"http://itunes.apple.com/search
 @interface ItunesRemoteService ()
 
 @property (nonatomic) NSURLSession *session;
+@property (nonatomic) NSURLSessionDataTask *task;
 
 @end
 
@@ -45,7 +47,7 @@ NSString *const kItunesRemoteService_Endpoint = @"http://itunes.apple.com/search
 ////////////////////////////////////////////////////////////////////////////////
 - (void)fetchPlaylistUsingSearchTerm:(NSString *)searchTerm
                    CompletionHandler:(ItunesRemoteServiceCompletionHandler)completionHandler
-                        errorHandler:(ItunesRemoteServiceCompletionHandler)errorHandler;
+                        errorHandler:(ItunesRemoteServiceErrorHandler)errorHandler;
 {
     NSString *resource = [NSString stringWithFormat:@"%@%@", kItunesRemoteService_Endpoint, searchTerm];
     
@@ -57,45 +59,44 @@ NSString *const kItunesRemoteService_Endpoint = @"http://itunes.apple.com/search
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 - (void)buildRequestWithResource:(NSString *)resource
-               completionHandler:(void (^)(NSArray *))completionHandler
-                    errorHandler:(void (^)(NSError *))errorHandler
+               completionHandler:(ItunesRemoteServiceCompletionHandler)completionHandler
+                    errorHandler:(ItunesRemoteServiceErrorHandler)errorHandler
 {
+    [self.task cancel];
+    
     NSString *encodedURL = [resource stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *serviceEndpoint = [NSURL URLWithString:encodedURL];
     
-    NSURLSessionDataTask *task = [self.session dataTaskWithURL:serviceEndpoint
-                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                     
-                                                     if(data == nil ||
-                                                        error!=nil ||
-                                                        ((NSHTTPURLResponse *)response).statusCode != 200) {
-                                                         NSError *responseError = [NSError errorWithDomain:@"com.itunes.remoteservice.search" code:-100 userInfo:@{}];
-                                                         dispatch_sync(dispatch_get_main_queue(), ^(){ errorHandler(responseError); });
-                                                     }
-                                                     
-                                                     NSError *responseProcessingError = nil;
-                                                     NSDictionary *decodedResponseData = [NSJSONSerialization JSONObjectWithData:data
-                                                                                                                         options:0
-                                                                                                                           error:&responseProcessingError];
-                                                     // Could build these out, into MTLModel objects.
-//                                                     NSArray *venuesResponseData = decodedResponseData[@"response"][@"venues"];
-//                                                     NSMutableArray *venues = [NSMutableArray array];
-                                                     
-//                                                     NSError *parseError = nil;
-//                                                     for (NSDictionary *venueDict in venuesResponseData) {
-//                                                         APIVenue *decodedResponse = [MTLJSONAdapter modelOfClass:[APIVenue class]
-//                                                                                            fromJSONDictionary:venueDict
-//                                                                                                         error:&parseError];
-//                                                         [venues addObject:decodedResponse];
-//                                                     }                                                     
-                                                     
-                                                     dispatch_sync(dispatch_get_main_queue(), ^(){
-                                                         completionHandler(nil);
-                                                     });
-                                                 }];
-    
-    [task resume];
+    self.task = [self.session dataTaskWithURL:serviceEndpoint
+                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                 if(data == nil || error || ((NSHTTPURLResponse *)response).statusCode != 200) {
+                                     NSError *responseError = [NSError errorWithDomain:@"com.itunes.remoteservice.search" code:-100 userInfo:@{}];
+                                     dispatch_sync(dispatch_get_main_queue(), ^(){ errorHandler(responseError); });
+                                     return;
+                                 }
+                                 
+                                 NSError *responseProcessingError = nil;
+                                 NSDictionary *decodedResponseData = [NSJSONSerialization JSONObjectWithData:data options:0
+                                                                                                       error:&responseProcessingError];
+                                
+                                if(responseProcessingError != nil) {
+                                     dispatch_sync(dispatch_get_main_queue(), ^(){ errorHandler(responseProcessingError); });
+                                }
+                                
+                                 NSArray *resultsJSON = decodedResponseData[@"results"];
+                                 NSMutableArray *results = [NSMutableArray array];
+                                 
+                                 for (NSDictionary *songDictionary in resultsJSON) @autoreleasepool {
+                                     Song *song = [[Song alloc] initWithDictionary:songDictionary];
+                                     [results addObject:song];
+                                 }
+                                 
+                                 dispatch_sync(dispatch_get_main_queue(), ^(){
+                                     completionHandler(results);
+                                 });
+                             }];
+    [self.task resume];    
 }
 
 @end
