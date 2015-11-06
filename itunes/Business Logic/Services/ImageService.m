@@ -9,6 +9,8 @@
 #import "ImageService.h"
 #import "URLSessionOperation.h"
 
+#define SafeBlockAsyncMainExec(block, ...) dispatch_async(dispatch_get_main_queue(), ^(){if(block) { block(__VA_ARGS__);};});
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 @interface ImageService ()
@@ -58,24 +60,26 @@
     
     // Download image
     URLSessionOperation *operation =
-    [[URLSessionOperation alloc] initWithSession:self.session URL:imageURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
+    [[URLSessionOperation alloc] initWithSession:self.session
+                                             URL:imageURL
+                               completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if(error || data==nil) {
-            dispatch_async(dispatch_get_main_queue(), ^(){
-                if(errorHandler) errorHandler(error);
-            });
+            SafeBlockAsyncMainExec(errorHandler, error);
             return;
         }
         
         UIImage *image = [[UIImage alloc] initWithData:data];
-        [weakSelf.imageCache setObject:image forKey:key];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            if (completionHandler) { completionHandler(image, NO); }
-        });
+        if(image) {
+            [weakSelf.imageCache setObject:image forKey:key];
+            SafeBlockAsyncMainExec(completionHandler, image, NO);
+        }
+        else {
+            NSError *dataError = [NSError errorWithDomain:@"com.mlloyd.itunes.imageFetchFailed" code:-1 userInfo:nil];
+            SafeBlockAsyncMainExec(errorHandler, dataError);
+        }
     }];
     
-    operation.name = [imageURL absoluteString];
+    operation.name = key;
     [self.queue addOperation:operation];
 }
 
